@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="margin:0 auto;border:1px #ddd solid;">
+		The current browser does not support Canvas, can replace the browser a try!
+	</canvas>
+
+	<script>
+
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+
+			canvas.width = 800;
+			canvas.height = 800;
+
+			if(canvas.getContext('2d')){
+				var context = canvas.getContext('2d');
+
+				// begin
+				var backgroundImage = new Image();
+				backgroundImage.src = "img/1.png";
+				backgroundImage.onload = function(){
+					var pattern = context.createPattern(backgroundImage,'repeat');
+					context.fillStyle = pattern;
+					context.fillRect(0,0,canvas.width,canvas.height)
+				}
+
+			}else{
+				alert('当前游览器不支持Canvas，请更换游览器后再试！');
+			}
+		}
+	</script>
+</body>
+<script>
+	/*总结
+		//填充图片
+		createPattern(img,repeat-style)
+
+		repeat-style:
+			repeat-x
+			repeat-y
+			repeat
+			no-repeat
+
+		//填充canvas
+		createPattern(canvas,repeat-style)
+		
+		//填充video
+		createPattern(video,repeat-style)
+	*/
+</script>
+</html>
